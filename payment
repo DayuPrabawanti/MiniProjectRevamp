@@ -1,0 +1,44 @@
+create table bank(
+    bank_entity_id integer primary key,
+    bank_code varchar(10) unique,
+    bank_name varchar(55) unique,
+    bank_modified_date timestamp,
+    foreign key (bank_entity_id) references business_entity(entity_id)
+)
+
+create table fintech(
+    fint_entity_id integer primary key,
+    fint_code varchar(10) unique,
+    fint_name varchar(55) unique,
+    fint_modified_date timestamp,
+    foreign key (fint_entity_id) references business_entity(entity_id)
+)
+
+create table users_account(
+    usac_bank_entity_id integer primary key,
+    usac_user_entity_id integer primary key,
+    usac_account_number varchar(25) unique,
+    usac_saldo number,
+    usac_type varchar(15),
+    usac_start_date timestamp,
+    usac_end_date timestamp,
+    usac_modified_date timestamp,
+    usac_status varchar(15),
+    foreign key (usac_bank_entity_id) references bank(bank_entity_id),
+    foreign key (usac_user_entity_id) references users(user_entity_id)
+)
+
+create table transaction_payment(
+    trpa_id serial primary key,
+    trpa_code_number varchar(55) unique,
+    trpa_order_number varchar(25),
+    trpa_debet number,
+    trpa_credit number,
+    trpa_type varchar(15),
+    trpa_note varchar(255),
+    trpa_modified_date timestamp,
+    trpa_source_id varchar(25) not null,
+    trpa_target_id varchar(25) not null,
+    trpa_user_entity_id integer,
+    foreign key (trpa_user_entity_id) references users(user_entity_id)
+)
