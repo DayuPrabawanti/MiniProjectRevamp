@@ -128,3 +128,11 @@ end;$$
 language sql
 
 alter table hr.department alter column dept_id set default deptIdSeq()
+
+-- INSERT DATA TABLE EMPLOYEE
+INSERT INTO hr.employee (emp_entity_id, emp_emp_number, emp_national_id, emp_birth_date, emp_marital_status, emp_gender, emp_hire_date, emp_salaried_flag, emp_vacation_hours, emp_sickleave_hours, emp_current_flag, emp_modified_date, emp_type, emp_joro_id, emp_emp_entity_id)
+VALUES
+    (1, 202207001, 13419981009004, '1998-03-12', 'M', 'M', '2020-01-10', '1', 12, 12, 1, '2023-07-06', 'internal', 1, 5),
+    (4, 202207002, 13420021009004, '2002-01-12', 'S', 'F', '2022-06-13', '1', 12, 12, 1, '2023-07-06', 'outsource', 2, 1),
+    (5, 202205001, 13419771009005, '1977-01-12', 'M', 'M', '2021-10-13', '1', 12, 12, 1, '2023-07-06', 'internal', 3, 1),
+    (7, 202205035, 13419771009006, '1998-03-12', 'S', 'F', '2021-10-13', '1', 12, 12, 1, '2023-07-06', 'outsource', 4, 5);
